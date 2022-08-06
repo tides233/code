@@ -1,0 +1,21 @@
+int main()
+{
+	int m;
+	int n;
+	scanf("%d%d", &m, &n);
+	while (n>m)
+	{
+		int t = m;
+		m = n;
+		n = m;
+	}
+	while (m%n)
+	{
+		int p = m%n;
+		m = n;
+		n = p;
+
+	}
+	printf("最大公约数为%d\n", n);
+	return 0;
+}
