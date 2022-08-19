@@ -1,0 +1,37 @@
+#include<stdio.h>
+void count(int x)
+{
+	int i;
+	for(i=2;i<=x-1;i++)
+	{
+		if (x%i==0)
+		{
+			printf("%d不是素数\n", x);
+			break;
+		}
+		
+	}
+    if (i == x)
+		{
+		printf("%d是素数\n", x);
+		
+		}/*该判断条件必须放在循环之外*/
+	/*如果放到循环内，则无法判断奇数是否为素数；*/
+}
+int main()
+{
+	int input = 0;
+	printf("输入一个数判断它是否为素数\n");
+	scanf("%d", &input);
+	switch (input)
+	{
+	case 1:
+		printf("1既不是素数也不是合数\n");
+		break;
+	
+	default:
+		count(input);
+		break;
+	}
+	return 0;
+}
