@@ -1,0 +1,48 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+void swap(int x,int y)
+{
+	int tmp;
+	tmp = x;
+	x = y;
+	y = tmp;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	printf("a=%d  b=%d\n", a, b);
+	swap(a,b);
+	printf("a=%d  b=%d\n", a, b);
+
+	return 0;
+}
+
+
+/*输出结果与预期不符，何也？*/
+//因为创造a,b,x,y时分别为它们创造了一个地址。
+//而变量x与y则储存了a与b的值，但他们的地址不相等，即x的地址与a的地址不相等，y的地址与b的也不相等；
+//因此执行交换时，只是对x地址下的x变量与y地址下的y变量进行了交换，而对a地址下的a变量与b地址下的b变量无影响，
+//自然不能交换a与b的值；
+//因此，若想交换a与b的值，则需对地址进行操作；
+
+
+//#include<stdio.h>
+// void swap(int* pa, int* pb)/*没有返回值函数类型用"void"*/
+//	 /*由于传的是地址，所以用指针接受*/
+//{
+//	int tmp;
+//	tmp = *pa; /**为解引用操作符，可以把地址下的变量找出来，即* pa = a;*/
+//	*pa = *pb;
+//	*pb = tmp;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	printf("a=%d  b=%d\n", a, b);
+//	swap(&a, &b);/*注意变量为地址用“取地址符”*/
+//	/*如果不用取地址符，程序运行不会报错(但不能完全运行)，但调试会报错；*/
+//	printf("a=%d  b=%d\n", a, b);
+//	return 0;
+}
