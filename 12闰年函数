@@ -1,0 +1,22 @@
+#include<stdio.h>
+void nian(int y)
+{
+	if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+	{
+		printf("%d是闰年\n", y);
+	}
+	else
+	{
+		printf("%d不是闰年\n",y);
+	}
+
+}
+
+int main()
+{ 
+	int year;
+	printf("输入一个年份，判断是否为闰年\n");
+	scanf("%d", &year);
+	nian(year);
+	return 0;
+}
