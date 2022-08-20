@@ -1,0 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int main()
+
+{
+	printf("%d", printf("%d", printf("%d", 43)));/*链式访问，把函数的返回值作为另外一个函数的参数*/
+	/*也就是上面的形式，注意，printf函数先打印参数，再把参数的元素个数返回，如上函数，先打印"43"，
+		然后返回"2",再打印"2",然后返回"1",最后打印"1"*/
+	return 0;
+}
