@@ -1,0 +1,53 @@
+
+#include<stdio.h>
+int F(int n)
+{
+	if (n<=2)
+	{
+		return 1;
+	}
+	else
+	{
+		return F(n - 1) + F(n - 2);
+	}
+
+}
+int main()
+{
+	int n,ret;
+	scanf("%d", &n);
+	ret = F(n);
+		printf("兔子数列第%d个数是%d\n", n, ret);
+
+//	return 0;
+//}
+//当n<=40时，计算量都比较小。但当n=50时，将需要花费很多时间来求
+//，因为不断计算F()，会计算很多重复，n越大，重复越多；
+//因此该方法非常，没有效率！！！！
+
+//#include<stdio.h>
+//int F(int n)
+//{
+//
+//	int a = 1;
+//	int b = 1;
+//	int c = 1;/*此处c=1亦可满足n=1，n=2时的情形；*/
+//	while (n>2)
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;
+//		n--;
+//	}
+//	return c;
+//}
+//int main()
+//{
+//	int n, ret;
+//	scanf("%d", &n);
+//	ret = F(n);
+//	printf("兔子数列第%d个数是%d\n", n, ret);
+//	
+//
+//	return 0;
+//}
