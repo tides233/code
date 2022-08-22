@@ -1,0 +1,22 @@
+#include<stdio.h>
+int my_strlen(char* str)
+{
+	if (*str!='\0')/*C语言中单引号与双引号 的 区别 单引号表示单个字符，
+		如 : ‘a’，而 双引号 则表示一个字符串，并以’0’作为结束，
+		如字符串"a"其实包含了两个字符：‘a’和’0’ C中， 在做字符比较时只能使用单引号。*/
+	{
+		return 1 + my_strlen(str+1);
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main()
+
+{
+	char arr[] = "wereIyou";
+	int len = my_strlen(arr);
+	printf("length=%d\n", len);
+	return 0;
+}
