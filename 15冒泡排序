@@ -6,6 +6,7 @@ void bubble(int arr[], int sz)
 	for (i = 0; i < sz; i++)
 	{/*生成进行多少轮冒泡*/
 		int j = 0;
+		int a = 1;/*(防止提前完成有序排序而继续比较排序浪费资源、空间)*/
 		for (j = 0; j < sz - 1 - i; j++)/*sz-1是定值，再减去i即可实现第一次9第二次8*/
 		{/*每一次冒泡比较多少对数；第一次9对，第二次8对......*/
 			if (arr[j]>arr[j+1])
@@ -13,7 +14,12 @@ void bubble(int arr[], int sz)
 				int t = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = t;
+				a = 0;/*(如果数据已经有序，则a不会等于0)*/
 			}
+		}
+		if (a==1)
+		{
+			break;
 		}
 	}
 
