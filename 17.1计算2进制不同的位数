@@ -1,0 +1,26 @@
+//计算输入的两个数的2进制位的不同个数
+
+#include<stdio.h>
+
+int count1(int ret)
+{
+	int count = 0;
+	while (ret)
+	{
+		ret = ret & (ret - 1);
+		count ++ ;
+	}
+	return count;
+}
+int main()
+{
+	int m = 0;
+	int n = 0;
+	int count = 0;
+	int ret = 0;
+	scanf("%d%d", &m, &n);
+	ret = m ^ n;
+	count = count1(ret);
+	printf("%d", count);
+	return 0;
+}
