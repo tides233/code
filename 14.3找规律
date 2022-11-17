@@ -1,0 +1,39 @@
+FJ在沙盘上写了这样一些字符串：
+
+A1 = “A”
+
+A2 = “ABA”
+
+A3 = “ABACABA”
+
+A4 = “ABACABADABACABA”
+
+… …
+
+你能找出其中的规律并写所有的数列AN吗？
+
+
+#include<stdio.h>
+void print(int n)
+{
+	if (n==1)
+	{
+		printf("%c", n + 64);
+	}
+	else
+	{
+		print(n - 1);
+		printf("%c", n + 64);
+		print(n - 1);
+
+	}
+}
+
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	print(n);
+	printf("\n");
+	return 0;
+}
