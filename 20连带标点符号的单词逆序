@@ -1,0 +1,60 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+
+
+//写一个算法，交换输入的字符数组的单词顺序（连同标点）
+//总字符长度不超过100
+//如：I love you.
+//交换后：you. love I
+
+#include<stdio.h>
+#include<string.h>
+
+void reverse(char* left, char* right)
+{
+	while (left<right)
+	{
+		int t = '0';
+		t = *left;
+		*left = *right;
+		*right = t;
+		left++;
+		right--;
+	}
+}
+
+
+
+
+int main()
+{
+	char t;
+	char* start, * end;
+	char arr[100] = { 0 };
+	gets(arr);
+	int m = strlen(arr);
+	start = arr;
+	reverse(arr, arr + m - 1);
+	printf("%s\n", arr);
+
+	while (*start!='\0')
+	{
+		end = start;
+		while (*end!=' '&&*end!='\0')
+		{
+			end++;
+		}
+		reverse(start, end-1);
+		if (*end==' ')
+		{
+			start = end + 1;
+		}
+		else
+		{
+			start = end;
+		}
+	}
+
+	printf("%s\n", arr);
+	return 0;
+}
