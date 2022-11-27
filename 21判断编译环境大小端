@@ -1,0 +1,18 @@
+//写一个代码，判断当前编译环境下是大端存储还是小段存储
+
+
+#include<stdio.h>
+int main()
+{
+	int a = 1;
+	char* p = (char*)&a;
+	if (*p==1)
+	{
+		printf("小端存储\n");
+	}
+	else
+	{
+		printf("大端存储\n");
+	}
+	return 0;
+}
