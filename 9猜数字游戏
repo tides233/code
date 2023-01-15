@@ -11,7 +11,7 @@ void game()/*游戏函数*/
 	int ret =0;
 	int guess = 0;
 	ret = rand() % 100 + 1;/*此处rand函数为生成一个随机数，范围为0到32677（7fff）*/
-	                         /*模上100后表示0-99的数字，再加1即为0-100*/
+	                         /*模上100后表示0-99的数字，再加1即为1-100*/
 	printf("猜一下电脑生成的随机数字\n");
 	while (1)
 	{
@@ -56,5 +56,82 @@ int main()
 			break;
 		}
 	} while (input);/*此处判断条件为input 当input为1时，执行循环，当为0时不执行。当不为0时亦为真*/
+	return 0;
+}
+
+
+
+#include<stdio.h>
+#include<time.h>
+
+
+void menu()
+{
+	printf("\n");
+	printf("THIS IS A NUMBER-GUESSING GAME\n");
+	printf("\n");
+	printf("**********************************\n");
+	printf("********      1.PLAY      ********\n");
+	printf("********      0.EXIT      ********\n");
+	printf("**********************************\n");
+
+
+}
+
+
+void game()
+{
+	int x = rand() % 100 + 1;
+	int guess;
+	printf("YOUR COMPUTER HAS ITS OWN MIND\n");
+	printf("AND IT HAS THINKED A SPERCIAL NUMBER\n");
+	printf("\nIT SHOUBLD BE 0 TO 100\n\n");
+	printf("THEN TRY YOUR BEST TO MAKE IT\n");
+	printf("\nNOW YOU CAN INPUT A NUMBER\n\n");
+	while (1)
+	{
+		scanf("%d", &guess);
+		if (guess>x)
+		{
+			printf("YOUS ARE A LITTLE BIG\n");
+		}
+		if (guess<x)
+		{
+			printf("MAKE IT BIGGER BETTER\n");
+
+		}
+		if (guess==x)
+		{
+			printf("WHAT A GENIUS YOU ARE,YOU GET IT!CONGRATULATION!\n");
+			break;
+		}
+	}
+}
+
+
+
+int main()
+{
+	int input;
+	srand((unsigned int)time(NULL));
+	do
+	{
+		menu();
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 0:
+			printf("OVER THE GAME.\n");
+			break;
+		case 1:
+			printf("START THE GAME.\n");
+			game();
+			break;
+		default:
+
+			printf("\nERROR!PLEASE INPUT THE TRUE ORDER!\n");
+			break;
+		}
+	} while (input);
 	return 0;
 }
