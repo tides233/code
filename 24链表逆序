@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<malloc.h>
+#include<string.h>
+
+typedef struct EMP EMP;
+
+struct EMP
+{
+	long id;
+	char name[20];
+	float salary;
+	EMP* next;
+};
+//
+//EMP* insert_note(EMP* head);
+
+EMP* head = NULL;
+EMP* last = NULL;
+
+void add(long id, char name[20], float salary)
+{
+	EMP* p = (EMP*)malloc(sizeof(EMP));
+	p->id = id;
+	strcpy(p->name, name);
+	p->salary = salary;
+	p->next = NULL;
+	if (head == NULL)
+	{
+		head = p;
+		last = p;
+	}
+	else
+	{
+		last->next = p;
+		last = p;
+	}
+}
+
+
+void print()
+{
+	EMP* p = NULL;
+	EMP* prep = NULL;
+	for (p = head; p != NULL; prep = p, p = p->next)
+	{
+		printf("ID:%8ld\n", p->id);
+		printf("姓名:%s\n", p->name);
+		printf("薪水:%6.2f\n\n", p->salary);
+	}
+}
+
+
+void reverse()
+{
+	EMP* t_p;
+	EMP* p;
+	EMP* pr;
+	for (pr = head, p = head->next;;)
+	{
+		if (pr==head)
+		{
+			pr->next = NULL;//原头结点需要额外的操作以指向NULL
+		}
+		t_p = p->next;//暂时保存p.next,以便后面链表仍能向“下”移动
+		
+		p->next = pr;
+		pr = p;
+		p = t_p;
+		if (p==NULL)//逆序之前最后的p.next是指向NULL的，进行p=t_p会使得p=NULL；可以看做结束的标志
+		{
+			head = pr;//pr仍然是指向为改成NULL的p的，正好可以作为头结点
+			break;
+		}
+	}
+
+}
+
+int main()
+{
+
+	/*insert_note();*/
+	add(225007, "小唐", 80);
+	add(225030, "小韦", 90);
+	add(225013, "小宋", 98);
+	add(225059, "小卢", 100);
+	print();
+	reverse();
+	print();
+
+	return 0;
+}
