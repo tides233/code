@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
 #include<stdio.h>
 #include<malloc.h>
 #include<string.h>
@@ -59,7 +61,8 @@ void reverse()
 	{
 		if (pr==head)
 		{
-			pr->next = NULL;//原头结点需要额外的操作以指向NULL
+			pr->next = NULL;//原来的 头结点 需要额外的操作以指向NULL
+			last = pr;
 		}
 		t_p = p->next;//暂时保存p.next,以便后面链表仍能向“下”移动
 		
