@@ -1,0 +1,59 @@
+#include<iostream>
+
+using namespace std;
+#include<fstream>
+
+int main()
+{
+	int count=0;
+	fstream in;
+	string temp,t,a;
+	in.open("test.txt", ios::in);
+	if (in.fail())
+	{
+		cout << "文件打开失败！\n";
+		exit(0);
+	}
+	in >> temp;
+	cout << "请输入需要查询的字符串：";
+	cin >> t;
+	a = t;//转换成大写
+	a[0] = toupper(a[0]);
+	while (!in.eof())
+	{
+		cout << temp<<' ';
+		if (!temp.compare(t))
+		{
+			count++;
+		}
+		if (!temp.compare(t+","))
+		{
+			count++;
+		}
+		if (!temp.compare(t + ";"))
+		{
+			count++;
+		}
+		if (!temp.compare(t + "."))
+		{
+			count++;
+		}
+		if (!temp.compare(t + "?"))
+		{
+			count++;
+		}
+		if (!temp.compare(t + "!"))
+		{
+			count++;
+		}
+		if (!temp.compare(a))
+		{
+			count++;
+		}
+		in >> temp;
+
+	}
+	cout << "个数为：" << count;
+	in.close();
+	return 0;
+}
